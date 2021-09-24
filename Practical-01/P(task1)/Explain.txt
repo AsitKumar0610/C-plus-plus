@@ -1,3 +1,0 @@
-We are not suppose to use the .h header file as the preprocessor will 
-not be able to find the respective header file and show fatal error 
-and thus the compiler will not be executed.

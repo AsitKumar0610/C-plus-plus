@@ -1,3 +1,0 @@
-There will be a fatal error shown when the cpp file is executed 
-because the respective file of cout will not be available
-to the compiler during the execution.

@@ -1,4 +1,0 @@
-As we are using a char datatype so if even we input abc or 123 as input the compiler 
-will store only ! char from the input data as it can store a character in the 8 bit 
-memory which is allocated type.
-We can use get line command instead of this to get full string as a input.
