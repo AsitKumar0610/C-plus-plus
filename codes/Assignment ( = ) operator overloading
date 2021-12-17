@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std ;
+
+class employee
+{
+    public :
+    int salary ;
+    string name ;
+    
+    employee(int s, string n)
+    {
+        this -> name = n ;
+        this -> salary = s ;
+    }
+    
+    void operator = (employee obj)
+    {
+        name = obj.name ;
+        salary = obj.salary ;
+    }
+};
+
+int main ()
+{
+    employee obj1(12000 , "AKASH") , obj2(14000, "RAHUL");
+    cout << "NAME and SALARY before using assignment operator: "<< endl ;
+    cout << obj1.name << endl;
+    cout << obj1.salary << endl;
+    
+    obj1 = obj2 ;
+    
+    cout <<"NAME and SALARY after using assignment operator: "<<endl ;
+    cout << obj1.name << endl ;
+    cout << obj1.salary << endl ;
+    
+}
