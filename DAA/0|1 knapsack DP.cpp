@@ -3,8 +3,7 @@
  
 using namespace std;
  
-// A utility function that returns maximum of two integers
-int max(int a, int b)
+ int max(int a, int b)
 {
     return (a > b) ? a : b;
 }
@@ -15,7 +14,6 @@ int knapSack(int W, int wt[], int val[], int n)
     int i, w;
     int K[n + 1][W + 1];
  
-    // Build table K[][] in bottom up manner
     for (i = 0; i <= n; i++)
     {
         for (w = 0; w <= W; w++)
@@ -45,9 +43,6 @@ int main()
         cin >> wt[i];
     }
  
-    //    int val[] = { 60, 100, 120 };
-    //    int wt[] = { 10, 20, 30 };
-    //    int W = 50;
     cout << "Enter the capacity of knapsack";
     cin >> W;
     cout << knapSack(W, wt, val, n);
