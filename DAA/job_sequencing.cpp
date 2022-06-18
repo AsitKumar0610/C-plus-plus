@@ -1,63 +1,56 @@
-#include<bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
 using namespace std;
-
-struct Job
-{
-    int id;
-    int price;
-    int deadline;
-};
-
-bool cmp(Job a, Job b)
-{
-    return a.price>b.price;
-}
-
-int main()
-{
-    int n;
-    cout<<"Enter the total number of jobs:";
-    cin>>n;
-
-    Job a[n];
-    cout<<"Enter the ID,Profit and Deadline:";
-    for(int i=0;i<n;i++)
-    {
-        cin >> a[i].id >> a[i].price >> a[i].deadline;
-    }
-
-    sort(a,a+n,cmp);
-    
-    // for(int i=0;i<n;i++)
-    // {
-    //     cout<<a[i].first<<" "<<a[i].second<<endl;
-    // }
-
-    int slot[n],profit=0;
-    vector <int>result;
-    for(int i=0;i<n;i++)
-    {
-        slot[i]=0;
-    }
-    for(int i=0;i<n;i++)
-    {
-        for (int j = min(n, a[i].deadline) - 1; j >= 0; j--)
-        {
-            if(slot[j]==0)
-            {
-                profit+=a[i].price;
-                result.push_back(a[i].id);
-                slot[j]=1;
+ 
+struct Job {
+    char id; 
+    int dead; 
+    int profit; 
                 
+};
+ 
+
+bool comparison(Job a, Job b)
+{
+    return (a.profit > b.profit);
+}
+ 
+void printJobScheduling(Job arr[], int n)
+{
+    sort(arr, arr + n, comparison);
+ 
+    int result[n]; 
+    bool slot[n]; 
+ 
+    for (int i = 0; i < n; i++)
+        slot[i] = false;
+ 
+    for (int i = 0; i < n; i++) {
+        for (int j = min(n, arr[i].dead) - 1; j >= 0; j--) {
+            if (slot[j] == false) {
+                result[j] = i; 
+                slot[j] = true; 
                 break;
             }
         }
     }
+ 
+    for (int i = 0; i < n; i++)
+        if (slot[i])
+            cout << arr[result[i]].id << " ";
+}
 
-    cout<<"Sequence of job to be done:";
-    for(int i=0;i<result.size();i++)
-    {
-        cout<<"JOB:"<<result[i]<<endl;
-    }    
-    cout<<"Maximum Profit:"<<profit;
+int main()
+{
+    Job arr[] = { { 'a', 2, 100 },
+                  { 'b', 1, 19 },
+                  { 'c', 2, 27 },
+                  { 'd', 1, 25 },
+                  { 'e', 3, 15 } };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Following is maximum profit sequence of jobs "
+            "\n";
+ 
+    printJobScheduling(arr, n);
+    return 0;
 }
